@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VARIABLES Y ESTILOS BASE COMPONENTES (TODO INCLUIDO AQUÍ)
+   VARIABLES Y ESTILOS BASE
    ========================================================================== */
 :root {
   --bg-dark: #07090e;
@@ -41,10 +41,10 @@ body {
 }
 
 /* ==========================================================================
-   NAVBAR & NAVEGACIÓN
+   NAVBAR & NAVEGACIÓN RESPONSIVE
    ========================================================================== */
 .navbar {
-  background: rgba(7, 9, 14, 0.9);
+  background: rgba(7, 9, 14, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
@@ -56,17 +56,20 @@ body {
 .nav-container {
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Permite ajuste fluido en móviles */
+  gap: 0.8rem;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 900;
   text-decoration: none;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .neon-cyan { color: var(--accent-cyan); text-shadow: 0 0 10px var(--glow-cyan); }
@@ -74,13 +77,14 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1.2rem;
 }
 
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -93,15 +97,47 @@ body {
   color: var(--accent-purple);
 }
 
-.btn-yt {
-  background: var(--accent-pink);
+/* Agrupación de botones de acción */
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-donate {
+  background: #0070ba;
   color: #fff;
-  padding: 0.5rem 1.2rem;
+  padding: 0.45rem 0.85rem;
   border-radius: 20px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.btn-donate:hover {
+  background: #003087;
+  box-shadow: 0 0 12px rgba(0, 112, 186, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-yt {
+  background: var(--accent-pink);
+  color: #fff;
+  padding: 0.45rem 0.85rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8rem;
   transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
 }
 
 .btn-yt:hover {
@@ -113,32 +149,32 @@ body {
    HERO & SECCIÓN RECURSOS
    ========================================================================== */
 .resources-hero {
-  padding: 4rem 0 2rem;
+  padding: 3.5rem 0 2rem;
   background: radial-gradient(circle at center, #141a29 0%, var(--bg-dark) 80%);
   text-align: center;
 }
 
 .page-title {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 900;
   margin-bottom: 0.5rem;
 }
 
 .page-subtitle {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .section {
-  padding: 3rem 0 5rem;
+  padding: 2.5rem 0 4rem;
 }
 
 /* GRID DE TARJETAS */
 .resources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -147,10 +183,11 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 250px; /* Previene recortes en títulos */
   transition: all 0.3s ease;
 }
 
@@ -164,7 +201,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .tag-badge {
@@ -316,26 +353,52 @@ body {
   color: var(--text-muted);
 }
 
+/* ==========================================================================
+   REGLAS RESPONSIVE (MÓVILES Y TABLETS)
+   ========================================================================== */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-}
-.btn-donate {
-  background: #0070ba;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  transition: 0.3s ease;
-  margin-right: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    gap: 0.8rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .btn-donate, .btn-yt {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.75rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
 }
 
-.btn-donate:hover {
-  background: #003087;
-  box-shadow: 0 0 12px rgba(0, 112, 186, 0.5);
-  transform: translateY(-2px);
+@media (max-width: 480px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-donate, .btn-yt {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
 }
